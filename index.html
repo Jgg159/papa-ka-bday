@@ -1,0 +1,679 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050b16">
+<title>Happy Birthday | Sudhir Kumar Yadav</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #050b16;
+  --blue: #54c8ff;
+  --cyan: #75ffe5;
+  --gold: #f8d58b;
+  --white: #f5f8ff;
+  --muted: #a4b2c7;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 15%, #10365a 0%, transparent 35%),
+    radial-gradient(circle at 85% 85%, #123c3d 0%, transparent 30%),
+    var(--bg);
+  color: var(--white);
+  font-family: 'Manrope', sans-serif;
+  overflow-x: hidden;
+}
+
+#stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #8de7ff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #54c8ff;
+  animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .15; transform: scale(.7); }
+  to { opacity: .9; transform: scale(1.5); }
+}
+
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 25px 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  width: min(850px, 100%);
+  border: 1px solid rgba(115,210,255,.2);
+  border-radius: 28px;
+  background: rgba(7,19,35,.88);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 30px 100px rgba(0,0,0,.45);
+  overflow: hidden;
+}
+
+.header {
+  padding: 20px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  gap: 10px;
+}
+
+.logo {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--blue);
+}
+
+.live {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--cyan);
+}
+
+.live::before {
+  content: "●";
+  margin-right: 8px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: .2; }
+}
+
+.progress {
+  height: 3px;
+  background: #17283a;
+}
+
+#bar {
+  height: 100%;
+  width: 20%;
+  background: linear-gradient(90deg,var(--blue),var(--cyan),var(--gold));
+  transition: width .5s;
+}
+
+main {
+  padding: clamp(28px,6vw,65px);
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen {
+  display: none;
+  width: 100%;
+  text-align: center;
+  animation: enter .7s ease;
+}
+
+.screen.active {
+  display: block;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.eyebrow {
+  font-family: 'DM Mono', monospace;
+  color: var(--cyan);
+  letter-spacing: 3px;
+  font-size: 11px;
+  margin-bottom: 25px;
+}
+
+.emblem {
+  width: 125px;
+  height: 125px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 30px;
+  border-radius: 35px;
+  border: 1px solid rgba(117,255,229,.3);
+  background: linear-gradient(145deg,rgba(84,200,255,.15),rgba(117,255,229,.04));
+  box-shadow: 0 0 50px rgba(84,200,255,.13);
+  font-size: 54px;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  50% { transform: translateY(-10px) rotate(3deg); }
+}
+
+h1 {
+  font-size: clamp(38px,8vw,72px);
+  line-height: 1.05;
+  letter-spacing: -3px;
+  margin-bottom: 22px;
+}
+
+h2 {
+  font-size: clamp(30px,6vw,48px);
+  line-height: 1.15;
+  margin-bottom: 20px;
+  letter-spacing: -1.5px;
+}
+
+.gradient {
+  background: linear-gradient(90deg,#fff,var(--blue),var(--cyan));
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.gold {
+  color: var(--gold);
+}
+
+.description {
+  max-width: 590px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+button {
+  padding: 15px 24px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  transition: .25s;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.15);
+}
+
+.primary {
+  background: linear-gradient(100deg,#69ceff,#83ffe4);
+  color: #06121d;
+  box-shadow: 0 8px 30px rgba(84,200,255,.2);
+}
+
+.secondary {
+  background: rgba(255,255,255,.06);
+  color: white;
+  border: 1px solid rgba(255,255,255,.13);
+}
+
+.actions {
+  margin-top: 35px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.terminal {
+  text-align: left;
+  max-width: 540px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid rgba(117,255,229,.2);
+  border-radius: 14px;
+  background: rgba(0,0,0,.25);
+  color: #a8c8dd;
+  font: 12px/2 'DM Mono', monospace;
+}
+
+.terminal span {
+  color: var(--cyan);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 14px;
+  margin: 35px auto;
+}
+
+.info {
+  padding: 22px 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.1);
+  background: rgba(255,255,255,.035);
+}
+
+.info .icon {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.info h3 {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.info p {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.message {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 25px;
+  text-align: left;
+  border-left: 3px solid var(--gold);
+  border-radius: 0 15px 15px 0;
+  background: rgba(248,213,139,.07);
+  color: #f5e9ce;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.number {
+  font-size: clamp(65px,12vw,105px);
+  font-weight: 800;
+  letter-spacing: -6px;
+  color: var(--gold);
+  text-shadow: 0 0 45px rgba(248,213,139,.2);
+}
+
+.signature {
+  margin-top: 25px;
+  color: var(--gold);
+  font-weight: 800;
+  font-size: 16px;
+}
+
+footer {
+  text-align: center;
+  color: #6f879f;
+  font: 10px 'DM Mono', monospace;
+  letter-spacing: 2px;
+  padding: 0 15px 23px;
+}
+
+#toast {
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translate(-50%,20px);
+  opacity: 0;
+  pointer-events: none;
+  background: #16354a;
+  border: 1px solid rgba(117,255,229,.3);
+  padding: 13px 20px;
+  border-radius: 12px;
+  z-index: 10;
+  font-size: 13px;
+  transition: .3s;
+}
+
+#toast.show {
+  opacity: 1;
+  transform: translate(-50%,0);
+}
+
+.confetti {
+  position: fixed;
+  top: -15px;
+  width: 9px;
+  height: 13px;
+  z-index: 9;
+  pointer-events: none;
+  animation: fall 4s linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(750deg);
+    opacity: .2;
+  }
+}
+
+@media(max-width:600px) {
+  main { min-height: 600px; padding: 30px 20px; }
+  .grid { grid-template-columns: 1fr; }
+  .info { display: flex; align-items: center; gap: 15px; text-align: left; }
+  .info .icon { margin: 0; }
+  .header { padding: 16px; }
+  .logo { font-size: 10px; }
+  .live { font-size: 9px; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<div id="stars"></div>
+
+<div class="page">
+<div class="container">
+
+<header class="header">
+  <div class="logo">◈ PROJECT: DAD</div>
+  <div class="live">BIRTHDAY PROTOCOL ACTIVE</div>
+</header>
+
+<div class="progress">
+  <div id="bar"></div>
+</div>
+
+<main>
+
+<!-- SCREEN 1 -->
+<section class="screen active" id="screen1">
+  <div class="eyebrow">SYSTEM INITIALIZATION · 001</div>
+
+  <div class="emblem">🛡️</div>
+
+  <h1>Something <span class="gradient">special</span><br>is loading.</h1>
+
+  <p class="description">
+    A highly classified birthday mission has been detected.
+    Only one person has the clearance to unlock it.
+  </p>
+
+  <div class="terminal">
+    <div><span>></span> Initializing birthday protocol...</div>
+    <div><span>></span> Identifying special person...</div>
+    <div><span>></span> Subject: Sudhir Kumar Yadav</div>
+    <div><span>></span> Security clearance: FAMILY VERIFIED</div>
+    <div><span>></span> Status: READY TO CELEBRATE</div>
+  </div>
+
+  <div class="actions">
+    <button class="primary" onclick="go(2)">
+      ACCESS MISSION →
+    </button>
+  </div>
+</section>
+
+<!-- SCREEN 2 -->
+<section class="screen" id="screen2">
+  <div class="eyebrow">THE PROFILE · 002</div>
+
+  <div class="emblem">💻</div>
+
+  <h2>The man behind the <span class="gradient">firewall.</span></h2>
+
+  <p class="description">
+    Meet someone who understands that protecting what matters
+    takes intelligence, patience, dedication and leadership.
+  </p>
+
+  <div class="grid">
+
+    <div class="info">
+      <div class="icon">🔐</div>
+      <div>
+        <h3>Cybersecurity</h3>
+        <p>Always thinking ahead. Always staying prepared.</p>
+      </div>
+    </div>
+
+    <div class="info">
+      <div class="icon">🛡️</div>
+      <div>
+        <h3>Data Protection</h3>
+        <p>Keeping valuable information secure.</p>
+      </div>
+    </div>
+
+    <div class="info">
+      <div class="icon">🏢</div>
+      <div>
+        <h3>Genpact</h3>
+        <p>Senior Manager · 8 years of dedication.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="message">
+    A professional who helps protect digital worlds.
+    A father whose guidance makes our world stronger.
+  </div>
+
+  <div class="actions">
+    <button class="secondary" onclick="go(1)">← BACK</button>
+    <button class="primary" onclick="go(3)">NEXT →</button>
+  </div>
+</section>
+
+<!-- SCREEN 3 -->
+<section class="screen" id="screen3">
+  <div class="eyebrow">IDENTITY VERIFICATION · 003</div>
+
+  <div class="emblem">🦸</div>
+
+  <h2>One question, <span class="gold">Papa.</span></h2>
+
+  <p class="description">
+    You protect important information every day.
+    You solve complicated problems.
+    You know how to handle security threats.
+
+    <br><br>
+    But do you know who the real superhero of this family is?
+  </p>
+
+  <div class="actions">
+    <button class="primary" onclick="reveal()">I KNOW THE ANSWER 😎</button>
+    <button class="secondary" onclick="reveal()">WHO IS IT? ✨</button>
+  </div>
+
+  <div id="answer" hidden>
+    <div class="message">
+      <h2 style="text-align:center;color:#f8d58b">
+        IT'S YOU, PAPA! ❤️
+      </h2>
+      No firewall can replace your care.
+      No security system can match your guidance.
+      And no technology can measure how much you mean to us.
+    </div>
+
+    <div class="actions">
+      <button class="primary" onclick="go(4)">
+        UNLOCK YOUR SURPRISE →
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- SCREEN 4 -->
+<section class="screen" id="screen4">
+  <div class="eyebrow">MISSION ACCOMPLISHED · 004</div>
+
+  <div class="emblem">🎂</div>
+
+  <div class="number">100%</div>
+
+  <h1>Happy Birthday,<br><span class="gradient">Papa!</span></h1>
+
+  <p class="description">
+    Dear Papa,
+    thank you for always guiding me, supporting me,
+    believing in me and teaching me to keep moving forward.
+  </p>
+
+  <div class="message">
+    Your hard work inspires me.
+    Your advice helps me grow.
+    Your support gives me confidence.
+
+    <br><br>
+
+    I hope this year brings you happiness, good health,
+    success and countless wonderful moments.
+
+    <br><br>
+
+    You spend your days protecting systems and information.
+    Today, it's our turn to celebrate you.
+
+    <br><br>
+
+    **Happy Birthday, Sudhir Kumar Yadav!**
+  </div>
+
+  <div class="signature">
+    Made with love, just for you. ❤️
+  </div>
+
+  <div class="actions">
+    <button class="primary" onclick="celebrate()">
+      CELEBRATE AGAIN 🎉
+    </button>
+
+    <button class="secondary" onclick="go(1)">
+      REPLAY ↻
+    </button>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  FAMILY ACCESS ONLY · DESIGNED WITH LOVE
+</footer>
+
+</div>
+</div>
+
+<div id="toast">Birthday protocol activated!</div>
+
+<script>
+/* STAR BACKGROUND */
+const stars = document.getElementById("stars");
+
+for(let i=0;i<90;i++){
+  const star = document.createElement("span");
+  star.className = "star";
+  star.style.left = Math.random()*100 + "%";
+  star.style.top = Math.random()*100 + "%";
+  star.style.animationDelay = Math.random()*3 + "s";
+  stars.appendChild(star);
+}
+
+/* SCREEN NAVIGATION */
+function go(number){
+  document.querySelectorAll(".screen").forEach(screen=>{
+    screen.classList.remove("active");
+  });
+
+  document.getElementById("screen"+number).classList.add("active");
+
+  document.getElementById("bar").style.width =
+    (number*25)+"%";
+
+  window.scrollTo({top:0,behavior:"smooth"});
+
+  if(number===4){
+    celebrate(false);
+  }
+}
+
+/* SPECIAL QUESTION */
+function reveal(){
+  document.getElementById("answer").hidden = false;
+  showToast("IDENTITY VERIFIED: FAMILY SUPERHERO ❤️");
+}
+
+/* NOTIFICATION */
+function showToast(message){
+  const toast = document.getElementById("toast");
+
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  setTimeout(()=>{
+    toast.classList.remove("show");
+  },2500);
+}
+
+/* BIRTHDAY CONFETTI */
+function celebrate(showMessage=true){
+
+  if(showMessage){
+    showToast("HAPPY BIRTHDAY, PAPA! 🎉");
+  }
+
+  const colours = [
+    "#54c8ff",
+    "#75ffe5",
+    "#f8d58b",
+    "#ffffff",
+    "#a78bfa"
+  ];
+
+  for(let i=0;i<120;i++){
+
+    const piece = document.createElement("div");
+
+    piece.className = "confetti";
+
+    piece.style.left = Math.random()*100+"vw";
+
+    piece.style.background =
+      colours[Math.floor(Math.random()*colours.length)];
+
+    piece.style.animationDelay =
+      Math.random()*1.5+"s";
+
+    piece.style.animationDuration =
+      (2.5+Math.random()*2)+"s";
+
+    document.body.appendChild(piece);
+
+    setTimeout(()=>{
+      piece.remove();
+    },5000);
+  }
+}
+</script>
+
+</body>
+</html>
